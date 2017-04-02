@@ -10,6 +10,17 @@
     - python-rpi.gpio
     - python-smbus
     - i2c-tools
+    - python-pip
+    - libffi-dev
+    - g++
+    - libssl-dev
+
 
 - name: download sourcecode
   git:  repo='http://github.com/adafruit/Adafruit-Raspberry-Pi-Python-Code.git' dest=/home/pi/Adafruit-Raspberry-Pi-Python-Code
+
+- name: testing I2C
+  raw: sudo i2cdetect -y 1 && sudo i2cdetect -y 0
+
+- name: install PIP
+  pip: name=https://pypi.python.org/packages/e6/90/43b5da15ffe873d51cd48c5c484f148efb62638b76eacfaf3ffdf83240dc/IMAPClient-1.0.2.tar.gz
