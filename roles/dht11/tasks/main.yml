@@ -6,11 +6,19 @@
     - python3-pip
     - python-dev
 
-- name: install library
-  shell: sudo pip-3.2 install rpi.gpio
-
-- name: download driver
-  git:  repo=https://github.com/adafruit/Adafruit_Python_DHT.git dest=/home/pi/Adafruit_Python_DHT
-
-- name: install library
-  shell: sudo python /home/pi/Adafruit_Python_DHT/setup.py install
+# - name: install library
+#   shell: sudo pip-3.2 install requests[security] rpi.gpio
+#
+# - name: download driver
+#   git:  repo=https://github.com/adafruit/Adafruit_Python_DHT.git dest=/home/pi/Adafruit_Python_DHT
+#   git clone –recursive https://github.com/Azure/azure-iot-sdks.git
+#   git clone https://github.com/azure/azure-iot-sdk-python
+#   git submodule update --init --recursive
+#   sudo pip3 install azure
+#   sudo apt-get upgrade cmake
+#   https://github.com/Azure-Samples/iot-hub-python-get-started/archive/master.zip
+#   sudo pip install deviceclient
+#   sudo pip-3.2 install DeviceClient
+#
+# - name: install library
+#   shell: sudo python /home/pi/Adafruit_Python_DHT/setup.py install

@@ -22,6 +22,7 @@
 # SOFTWARE.
 import Adafruit_DHT
 import urllib
+import DeviceClient
 
 # Sensor should be set to Adafruit_DHT.DHT11,
 # Adafruit_DHT.DHT22, or Adafruit_DHT.AM2302.

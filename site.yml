@@ -6,4 +6,5 @@
   become_method: sudo
   roles:
     # - preparation
-    - dht11
+    # - dht11
+    - mcp3002

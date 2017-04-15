@@ -1,0 +1,15 @@
+---
+
+# - name: download driver
+#   git:  repo=https://github.com/adafruit/Adafruit_Python_MCP3008.git dest=/home/pi/Adafruit_Python_MCP3008
+#
+# - name:  install driver
+#   shell: sudo python /home/pi/Adafruit_Python_MCP3008/setup.py install
+#
+# - name: install using pip
+#   pip: name=adafruit-mcp3008
+
+- name: create directory
+  file: path=/home/pi/mcp2003 state=directory 
+- name: copy file
+  template: src=simpletest.py dest=/home/pi/mcp2003/simpletest.py mode=755
