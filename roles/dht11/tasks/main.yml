@@ -1,0 +1,16 @@
+---
+- name: install git
+  apt: name={{item}} state=present
+  with_items:
+    - python3
+    - python3-pip
+    - python-dev
+
+- name: install library
+  shell: sudo pip-3.2 install rpi.gpio
+
+- name: download driver
+  git:  repo=https://github.com/adafruit/Adafruit_Python_DHT.git dest=/home/pi/Adafruit_Python_DHT
+
+- name: install library
+  shell: sudo python /home/pi/Adafruit_Python_DHT/setup.py install

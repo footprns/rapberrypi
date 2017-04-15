@@ -2,13 +2,15 @@
 # - name: Run the equivalent of "apt-get update" as a separate step
 #   apt: update_cache=yes cache_valid_time=84600
 #
-# - name: install git
-#   apt: name={{item}} state=present
-#   with_items:
+- name: install git
+  apt: name={{item}} state=present
+  with_items:
 #      - git
 #      - python-dev
 #      - python-rpi.gpio
 #      - python-smbus
+       - build-essential
+       - python-openssl
 #      - i2c-tools
 #      - python-pip
 #      - libffi-dev
@@ -19,6 +21,7 @@
 #      - python3
 #      - python3-pip
 #      - libav-tools
+#      - wiringpi
 #
 # - name: download sourcecode
 #   git:  repo='http://github.com/adafruit/Adafruit-Raspberry-Pi-Python-Code.git' dest=/home/pi/Adafruit-Raspberry-Pi-Python-Code
@@ -30,13 +33,26 @@
   #   pip: name=avconv
 #   pip: name=https://pypi.python.org/packages/e6/90/43b5da15ffe873d51cd48c5c484f148efb62638b76eacfaf3ffdf83240dc/IMAPClient-1.0.2.tar.gz
 
-- name: create directory
-  file: path=/home/pi/{{item}}  state=directory mode=0755 owner=pi group=pi
-  with_items:
-    - button
-    - TrafficLights
-    - MusicBox
-    - MotionSensor
+# - name: create directory
+#   file: path=/home/pi/{{item}}  state=directory mode=0755 owner=pi group=pi
+#   with_items:
+#     - button
+#     - TrafficLights
+#     - MusicBox
+#     - MotionSensor
+#     - motor
+
+# - name: set GPIO
+#   shell: |
+#     sudo pip-3.2 install --upgrade wiringpi
+#     gpio -g mode 18 pwm
+#     gpio pwm-ms
+#     gpio pwmc 192
+#     gpio pwmr 2000
+#     gpio -g pwm 18 100
+#     gpio -g pwm 18 150
+#     gpio -g pwm 18 200
+
 
 - name: testing led
   template: src={{item}} dest=/home/pi/{{item}} mode=0755 owner=pi group=pi
@@ -56,4 +72,8 @@
     # - TrafficLights/tl02.py
     # - TrafficLights/tl03.py
     # - MusicBox/mb01.py
-    - MotionSensor/ms01.py
+    # - MotionSensor/ms01.py
+    - motor/motor01.py
+    - motor/motor02.py
+    - motor/motor03.py
+    - motor/motor04.py
